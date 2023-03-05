@@ -3,7 +3,7 @@
 
 ### Current State:
 
-by adding "*/5 * * * * /usr/bin/sudo /home/kerem/.scripts/deneme.sh >> /home/kerem/.scripts/log.txt" to the sudo's chrontab entry, enable automatic charging level on ThinkPad laptops (only limited to thinkpads for now)
+by adding "*/5 * * * * /usr/bin/sudo /home/kerem/.scripts/deneme.sh >> /home/kerem/.scripts/log.txt" to the sudo's crontab entry, enable automatic charging level on ThinkPad laptops (only limited to thinkpads for now)
 
 requires " https://github.com/teleshoes/tpacpi-bat " to work.
 
@@ -28,6 +28,6 @@ requires " https://github.com/teleshoes/tpacpi-bat " to work.
 ## TODO's
 1. Replace /kerem/'s tih /$USER/
 2. integrate tpacpi-bat to the script
-3. make script portable and run without the use of the chrontab
+3. make script portable and run without the use of the crontab
 4. rewrite everything to become a sole daemon (as like the implementation of the battery charging on macOS)
 5. automatic desired target hour implemention according to the powerusage.txt
