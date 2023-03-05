@@ -14,8 +14,8 @@ repeat(){
 }
 #	echo $VAL
 	if [[ $VAL -eq 0 || $VAL -gt 400 ]] ; then
-		:
-#		echo charging
+		
+		echo charging >> asdf.txt
 	else
 		if [[ $VAL -le $MAX && $VAL -ge $INIT ]] ; then
 			echo "$VAL"
@@ -37,16 +37,34 @@ repeat(){
 				fi
 			fi
 		fi
-		
-		tail -12 /home/kerem/.scripts/log.txt > /home/kerem/.scripts/input.txt
-		repeat "$VAL"
+		echo $(cat /sys/class/power_supply/BAT0/power_now) >> /home/kerem/.scripts/powerusage.txt
+		tail -288 /home/kerem/.scripts/log.txt > /home/kerem/.scripts/input.txt
+		#echo -e  >> /home/kerem/.scripts/input.txt
+		#repeat $VAL 12x
+		#echo -e "\n" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+		echo -e "$VAL" >> /home/kerem/.scripts/input.txt
+
 		AVG=$(awk '{s+=$1}END{print s/NR}' /home/kerem/.scripts/log.txt )
-		echo $AVG #>> input.txt
+		echo -e $AVG >> /home/kerem/.scripts/input.txt
 		AVGALL=$(awk '{s+=$1}END{print s/NR}' /home/kerem/.scripts/input.txt )
-		echo $AVGALL
-		AVGALL=${$AVGALL%.*}
+
+		AVGALL=${AVGALL%%,*} #TR ssistemlerde , eng sistemlerde . olmalı!
+		#echo -e $AVGALL
 		AVGALL=$(($AVGALL))
-		/usr/bin/doas tpacpi-bat -s SP 0 $AVGALL
-		/usr/bin/doas tpacpi-bat -s ST 0 $(($AVGALL-$GAP))
+		#echo -e $AVGALL
+		/usr/bin/sudo tpacpi-bat -s SP 0 $AVGALL
+		/usr/bin/sudo tpacpi-bat -s ST 0 $(($AVGALL-$GAP))
 		
 	fi
