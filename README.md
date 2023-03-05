@@ -9,7 +9,7 @@ requires " https://github.com/teleshoes/tpacpi-bat " to work.
 
 -doas or sudo'less implemention is on development, sometimes creates small hicckups on realtime systems due to use of sudo/doas command.
 -should not be used with tpacpi-bat's systemctl daemon! otherivise every 1 minute current changements gets overwritten.
--intended to being used with open-rc gentoo setups. but can be also used with oher distributions.
+-intended to being used with open-rc gentoo setups. but can also be  used with oher distributions.
 
 ### How to enable
 1. create a folder named .scripts on your home directory
