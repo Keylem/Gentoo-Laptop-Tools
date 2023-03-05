@@ -26,7 +26,7 @@ requires " https://github.com/teleshoes/tpacpi-bat " to work.
 12. Now the script should be running every 5 minutes (unless being plugged to power)
 
 ## TODO's
-1. Replace /kerem/'s tih /$USER/
+1. Replace /kerem/'s with /$USER/
 2. integrate tpacpi-bat to the script
 3. make script portable and run without the use of the crontab
 4. rewrite everything to become a sole daemon (as like the implementation of the battery charging on macOS)
